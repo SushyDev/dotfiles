@@ -1,23 +1,5 @@
-# Set path to oh-my-zsh installation
-export ZSH="$DOTFILES/zsh/oh-my-zsh"
-
 # Set theme
 ZSH_THEME="vapor"
-
-# Add brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Add github-copilot
-source "$DOTFILES/zsh/github-copilot.zsh"
-
-# Add nvm
-source "$DOTFILES/zsh/nvm.zsh"
-
-# Aliases
-source "$DOTFILES/zsh/aliases.zsh"
-
-# Functions
-source "$DOTFILES/zsh/functions.zsh"
 
 # Set plugins
 plugins=(
@@ -31,3 +13,18 @@ tmux source-file "$DOTFILES/tmux/tmux.conf"
 
 # Load oh-my-zsh
 source "$ZSH/oh-my-zsh.sh"
+
+# Aliases
+source "$ZSH_CUSTOM/aliases.zsh"
+
+# Functions
+source "$ZSH_CUSTOM/functions.zsh"
+
+# Add github-copilot
+source "$ZSH_CUSTOM/modules/github-copilot.zsh"
+
+# Add nvm
+source "$ZSH_CUSTOM/modules/nvm.zsh"
+
+# Add brew
+source "$ZSH_CUSTOM/modules/brew.zsh"
