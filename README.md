@@ -1,4 +1,4 @@
-# NVim install
+# NVIM install
 Just a symlink:
 `ln -s /Users/Shared/config/nvim "$HOME/.config/nvim"`
 
