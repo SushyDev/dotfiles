@@ -11,6 +11,9 @@ plugins=(
 	zsh-autosuggestions
 )
 
+# This is okay because permissions are configured beforehand
+export ZSH_DISABLE_COMPFIX=true
+
 # Before we load oh-my-zsh we first need to define its configuration above
 
 # Load oh-my-zsh
