@@ -103,9 +103,7 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
-
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
+-- Adds a number of user-friendly snippets 'rafamadriz/friendly-snippets',
     },
   },
 
@@ -136,14 +134,13 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
+  {
+    'olimorris/onedarkpro.nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'onedark_dark'
+    end,
+  },
 
   {
     -- Set lualine as statusline
@@ -152,7 +149,6 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        -- theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
