@@ -1,5 +1,6 @@
 # Set path to oh-my-zsh
 export ZSH="$DOTFILES/zsh/oh-my-zsh"
+export ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
 # Set theme
 ZSH_THEME="vapor"
