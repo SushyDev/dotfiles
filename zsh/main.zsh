@@ -2,18 +2,17 @@
 export ZSH="$DOTFILES/zsh/oh-my-zsh"
 export ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
+# This is okay because permissions are configured beforehand
+ZSH_DISABLE_COMPFIX=true
+
 # Set theme
 ZSH_THEME="vapor"
 
 # Set plugins
-plugins=(
-	git
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
-# This is okay because permissions are configured beforehand
-export ZSH_DISABLE_COMPFIX=true
+# Set OS
+OS=$(uname -s)
 
 # Before we load oh-my-zsh we first need to define its configuration above
 

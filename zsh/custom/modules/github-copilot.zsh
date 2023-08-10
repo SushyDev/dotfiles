@@ -1,3 +1,7 @@
+if [ "$(uname)" != "Darwin" ]; then
+  return
+fi
+
 copilot_what-the-shell () {
   TMPFILE=$(mktemp);
   trap 'rm -f $TMPFILE' EXIT;
@@ -53,3 +57,5 @@ copilot_gh-assist () {
 alias 'gh?'='copilot_gh-assist';
 
 alias 'wts'='copilot_what-the-shell';
+
+echo "Module: Github Copilot"
