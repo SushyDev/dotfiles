@@ -57,5 +57,3 @@ copilot_gh-assist () {
 alias 'gh?'='copilot_gh-assist';
 
 alias 'wts'='copilot_what-the-shell';
-
-echo "Module: Github Copilot"

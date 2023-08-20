@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 -- debug.lua
 --
 -- Shows how to use the DAP plugin to debug your code.
@@ -87,7 +88,7 @@ return {
     dap.adapters.php = {
       type = "executable",
       command = "node",
-      args = { os.getenv("DOTFILES") .. "/nvim/lua/custom/vscode-php-debug/out/phpDebug.js" }
+      args = { os.getenv("DOTFILES") .. "/nvim/lua/debuggers/vscode-php-debug/out/phpDebug.js" }
     }
 
     dap.configurations.php = {
