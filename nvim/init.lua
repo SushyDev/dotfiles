@@ -268,6 +268,9 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- Set commandline height
+vim.o.cmdheight = 0
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -277,6 +280,15 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- [[ Lualine ]]
+local auto_theme_custom = require('lualine.themes.auto')
+auto_theme_custom.normal.c.bg = 'none'
+require('lualine').setup {
+  options = {
+    theme = auto_theme_custom,
+  }
+}
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
