@@ -103,22 +103,23 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
--- Adds a number of user-friendly snippets 'rafamadriz/friendly-snippets',
+      -- Adds a number of user-friendly snippets
+      -- 'rafamadriz/friendly-snippets',
     },
   },
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
+
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup{
-        current_line_blame = true,
-      }
-    end,
     opts = {
       -- See `:help gitsigns.txt`
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 100,
+      },
       signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -198,7 +199,7 @@ require('lazy').setup({
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
   -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -223,6 +224,12 @@ vim.wo.relativenumber = true
 
 -- Enable mouse mode
 -- vim.o.mouse = 'a'
+
+-- Disable mouse mode
+vim.o.mouse = ''
+
+-- Disable swap
+vim.opt.swapfile = false
 
 -- Center cursors using scrolloff
 vim.o.scrolloff = 999
@@ -254,6 +261,12 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- Tab stuff
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- [[ Basic Keymaps ]]
 
@@ -296,10 +309,10 @@ require('telescope').setup {
 }
 
 -- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension('fzf'))
 
 -- Enable telescope tailwindcss (tailiscope)
-require('telescope').load_extension('tailiscope')
+pcall(require('telescope').load_extension('tailiscope'))
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -409,7 +422,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>.', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -504,7 +517,7 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<C-CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },

@@ -7,3 +7,6 @@
 [submodule "zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "nvim/lua/custom/vscode-php-debug"]
+	path = nvim/lua/custom/vscode-php-debug
+	url = https://github.com/xdebug/vscode-php-debug.git

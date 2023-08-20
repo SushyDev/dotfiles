@@ -48,9 +48,7 @@ return {
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
-      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, { desc = 'Debug: Set Breakpoint' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -60,6 +58,7 @@ return {
       --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
+        enabled = false,
         icons = {
           pause = '⏸',
           play = '▶',
@@ -82,6 +81,24 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     -- Install golang specific config
-    require('dap-go').setup()
-  end,
+    -- require('dap-go').setup()
+
+    -- Install PHP specific config
+    dap.adapters.php = {
+      type = "executable",
+      command = "node",
+      args = { os.getenv("DOTFILES") .. "/nvim/lua/custom/vscode-php-debug/out/phpDebug.js" }
+    }
+
+    dap.configurations.php = {
+      {
+        type = "php",
+        request = "launch",
+        name = "Listen for Xdebug",
+        port = 9003,
+        pathMappings = {
+          ["/var/www/html"] = "${workspaceFolder}"
+      }
+    }
+} end,
 }
