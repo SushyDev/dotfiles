@@ -4,7 +4,6 @@ function d2u() {
 	git reset --hard
 }
 
-
 function tap-sync() {
 	ddev magento adwise:dbsync:config:import .config.local.json --skip-denylist
 	ddev magento cache:flush

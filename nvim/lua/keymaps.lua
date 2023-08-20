@@ -45,8 +45,6 @@ vim.keymap.set('n', '<leader>svg', function()
 end, { desc = '[S]earch [V]endor [G]rep' })
 
 -- [[ Resizing ]]
--- Use M-(hjkl) to resize with increments of 5
-
 vim.keymap.set('n', '<M-h>', '5<C-w><', { silent = true })
 vim.keymap.set('n', '<M-j>', '5<C-w>-', { silent = true })
 vim.keymap.set('n', '<M-k>', '5<C-w>+', { silent = true })

@@ -7,6 +7,7 @@ vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
+
 -- Make line numbers relative_time
 vim.wo.relativenumber = true
 
@@ -50,14 +51,18 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- Tab stuff
+-- Default indentation
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- Set commandline height
-vim.o.cmdheight = 0
+-- Disabled because of ENTER bug
+-- vim.o.cmdheight = 0
+
+-- Remove netrw banner
+vim.g.netrw_banner = 0
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
