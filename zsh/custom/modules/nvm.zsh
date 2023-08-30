@@ -1,4 +1,4 @@
-if [ "$OS" = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   export NVM_DIR="$HOME/.nvm"
 
   # This loads nvm

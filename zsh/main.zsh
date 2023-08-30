@@ -6,20 +6,11 @@ export ZSH_CUSTOM="$DOTFILES/zsh/custom"
 ZSH_DISABLE_COMPFIX=true
 
 # Set theme
-ZSH_THEME="vapor"
+source $ZSH_CUSTOM/themes/vapor.zsh
 
 # Set plugins
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-
-# Set OS
-OS=$(uname -s)
-
-# Before we load oh-my-zsh we first need to define its configuration above
-
-# Load oh-my-zsh
-source "$ZSH/oh-my-zsh.sh"
-
-# When oh-my-zsh is loaded we can start loading other things
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases
 source "$ZSH_CUSTOM/aliases.zsh"

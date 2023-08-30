@@ -4,9 +4,15 @@ function d2u() {
 	git reset --hard
 }
 
-function tap-sync() {
-	ddev magento adwise:dbsync:config:import .config.local.json --skip-denylist
-	ddev magento cache:flush
-	ddev auth ssh
-	ddev exec vendor/bin/tap-sync.sh $1 $2
+function u2d() {
+	git config core.autocrlf true
+	git rm --cached -r .
+	git reset --hard
+}
+
+function dev() {
+	NAME=$(ls $1 | fzf)
+	DIR=$1/$NAME
+	tmux new-session -d -A -s $NAME -c $DIR
+	tmux switch-client -t $NAME
 }
