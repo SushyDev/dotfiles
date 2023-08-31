@@ -11,14 +11,12 @@ function u2d() {
 }
 
 function new() {
-	NAME=$1
-	DIR=$2
-	tmux new-session -d -A -s $NAME -c $DIR
-	tmux switch-client -t $NAME
+	tmux new-session -d -A -s $1 -c $2
+	tmux switch-client -t $1
 }
 
 function dev() {
-	NAME=$(ls $1 | fzf)
+	NAME=$(ls $PROJECTS | fzf)
 	DIR=$1/$NAME
 	new $NAME $DIR
 }
