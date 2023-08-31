@@ -3,21 +3,18 @@
 
 return {
   'nvim-lualine/lualine.nvim',
-  opts = {
-    options = {
-      icons_enabled = false,
-      component_separators = '|',
-      section_separators = '',
-    },
-  },
   config = function ()
     -- Set transparent background color
-    local auto_theme_custom = require('lualine.themes.auto')
-    auto_theme_custom.normal.c.bg = 'none'
+    local theme_custom = require('lualine.themes.auto')
+    theme_custom.normal.c.bg = 'none'
 
     require('lualine').setup {
       options = {
-        theme = auto_theme_custom,
+        icons_enabled = false,
+        theme = theme_custom,
+        component_separators = { left = '|', right = '|' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = { 'netrw' },
       }
     }
   end

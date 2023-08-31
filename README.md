@@ -1,6 +1,9 @@
 # NVIM install
 Just a symlink:
-`ln -s /Users/Shared/config/nvim "$HOME/.config/nvim"`
+`ln -s $DOTFILES/nvim $HOME/.config/nvim`
+
+# Kitty install
+`ln -s $DOTFILES/kitty $HOME/.config/kitty`
 
 # ZSH install
 Update your `~/.zshrc`:
@@ -8,12 +11,3 @@ Update your `~/.zshrc`:
 export DOTFILES="/path/to/dotfiles"
 source "$DOTFILES/zsh/main.zsh"
 ```
-
-# TMUX apple terminal
-Configure the shell
-```sh
-/opt/homebrew/bin/tmux new-session -A -s main
-```
-
-After reloading your shell run:
-`$DOTFILES/zsh/install.sh`

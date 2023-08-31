@@ -10,9 +10,15 @@ function u2d() {
 	git reset --hard
 }
 
+function new() {
+	NAME=$1
+	DIR=$2
+	tmux new-session -d -A -s $NAME -c $DIR
+	tmux switch-client -t $NAME
+}
+
 function dev() {
 	NAME=$(ls $1 | fzf)
 	DIR=$1/$NAME
-	tmux new-session -d -A -s $NAME -c $DIR
-	tmux switch-client -t $NAME
+	new $NAME $DIR
 }

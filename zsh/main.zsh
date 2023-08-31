@@ -2,9 +2,6 @@
 export ZSH="$DOTFILES/zsh/oh-my-zsh"
 export ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
-# This is okay because permissions are configured beforehand
-ZSH_DISABLE_COMPFIX=true
-
 # Set theme
 source $ZSH_CUSTOM/themes/vapor.zsh
 
@@ -26,6 +23,9 @@ source "$ZSH_CUSTOM/modules/nvm.zsh"
 
 # Add brew
 source "$ZSH_CUSTOM/modules/brew.zsh"
+
+# Start tmux session
+[ -z "$TMUX" ] && tmux new-session -A -s main
 
 # Set tmux conf
 tmux source-file "$DOTFILES/tmux/tmux.conf" 

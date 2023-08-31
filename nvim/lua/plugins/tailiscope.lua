@@ -1,5 +1,3 @@
 -- Tailwind for telescope
 
-return {
-  'danielvolchek/tailiscope.nvim',
-}
+return { 'danielvolchek/tailiscope.nvim' }

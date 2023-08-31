@@ -37,10 +37,7 @@ return {
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
-      ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
-      },
+      ensure_installed = {},
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
@@ -80,16 +77,6 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
-
-    -- Install golang specific config
-    -- require('dap-go').setup()
-
-    -- Install PHP specific config
-    dap.adapters.php = {
-      type = "executable",
-      command = "node",
-      args = { os.getenv("DOTFILES") .. "/nvim/lua/debuggers/vscode-php-debug/out/phpDebug.js" }
-    }
 
     dap.configurations.php = {
       {

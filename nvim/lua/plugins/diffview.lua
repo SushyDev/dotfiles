@@ -1,7 +1,8 @@
 return {
   'sindrets/diffview.nvim',
   config = function()
-    require('diffview').setup {
+    local diffview = require 'diffview'
+    diffview.setup {
       use_icons = false,
     }
 
@@ -9,7 +10,7 @@ return {
       if vim.fn.tabpagenr('$') > 1 then
         vim.cmd('tabclose')
       else
-        require('diffview').open({})
+        diffview.open({})
       end
     end, { desc = 'Open [D]iff[V]iew' })
   end
