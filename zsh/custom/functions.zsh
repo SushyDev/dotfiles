@@ -11,12 +11,16 @@ function u2d() {
 }
 
 function new() {
-	tmux new-session -d -A -s $1 -c $2
-	tmux switch-client -t $1
+	NAME=$(basename $1)
+	tmux new-session -d -s $NAME -c $1
+	tmux switch-client -t $NAME
 }
 
 function dev() {
-	NAME=$(ls $PROJECTS | fzf)
-	DIR=$1/$NAME
-	new $NAME $DIR
+	PROJECT=$(ls $PROJECTS | fzf --height 50% --border --prompt='Project: ')
+	[ -z "$PROJECT" ] || new $PROJECTS/$PROJECT
+}
+
+function ch() {
+	history 1 | awk '{$1=""; print $0}' | fzf | xargs | pbcopy
 }
