@@ -7,3 +7,6 @@
 [submodule "zsh/custom/plugins/zsh-autocomplete"]
 	path = zsh/custom/plugins/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule "zsh/custom/plugins/fast-syntax-highlighting"]
+	path = zsh/custom/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
