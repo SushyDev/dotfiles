@@ -3,8 +3,6 @@ export ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
 # Lib
 source "$ZSH_CUSTOM/lib/evalcache.zsh"
-source "$ZSH_CUSTOM/lib/fix-cursor.zsh"
-source "$ZSH_CUSTOM/lib/git.zsh"
 
 # Modules
 source "$ZSH_CUSTOM/modules/brew.zsh"
@@ -13,6 +11,10 @@ source "$ZSH_CUSTOM/modules/bash-completion.zsh"
 # source "$ZSH_CUSTOM/modules/nvm.zsh"
 source "$ZSH_CUSTOM/modules/fnm.zsh"
 source "$ZSH_CUSTOM/modules/github-copilot.zsh"
+
+# Lib
+source "$ZSH_CUSTOM/lib/fix-cursor.zsh"
+source "$ZSH_CUSTOM/lib/git.zsh"
 
 # General
 source "$ZSH_CUSTOM/themes/vapor.zsh"
