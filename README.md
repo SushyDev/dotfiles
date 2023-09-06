@@ -6,8 +6,9 @@ Just a symlink:
 `ln -s $DOTFILES/kitty $HOME/.config/kitty`
 
 # ZSH install
-Update your `~/.zshrc`:
+Update your `~/.zprofile`:
 ```sh
+export PROJECTS="/path/to/projects"
 export DOTFILES="/path/to/dotfiles"
-source "$DOTFILES/zsh/main.zsh"
+ZDOTDIR=$DOTFILES/zsh
 ```

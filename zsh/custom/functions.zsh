@@ -17,7 +17,7 @@ function new() {
 }
 
 function dev() {
-	PROJECT=$(ls $PROJECTS | fzf --height 50% --border --prompt='Project: ')
+	PROJECT=$(ls $PROJECTS | fzf --height 30%)
 	[ -z "$PROJECT" ] || new $PROJECTS/$PROJECT
 }
 

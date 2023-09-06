@@ -6,9 +6,9 @@ read -p "Continue? (y/n): " yn
 case "$yn" in [yY]*) ;; *) echo "Abort." ; exit ;; esac
 
 echo "Updating zsh"
-mv $HOME/.zshrc $HOME/.zshrc.bak
-echo "export DOTFILES=$DOTFILES" >> $HOME/.zshrc
-echo "source $DOTFILES/zsh/main.zsh" >> $HOME/.zshrc
+mv $HOME/.zprofile $HOME/.zprofile.bak
+echo "export DOTFILES=$DOTFILES" >> $HOME/.zprofile
+echo "ZDOTDIR=$DOTFILES/zsh" >> $HOME/.zprofile
 
 [ ! -d $HOME/.config/.bak ] && mkdir $HOME/.config/.bak
 

@@ -1,5 +1,3 @@
-source $ZSH_CUSTOM/lib/git.zsh
-
 local user_symbol='%(!.#.$)'
 local reset_color="%F{015}%"
 local return_code="%F{009}%(?..%? ↵%{$reset_color})"

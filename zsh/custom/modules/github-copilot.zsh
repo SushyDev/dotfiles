@@ -1,1 +1,1 @@
-eval "$(github-copilot-cli alias -- "$0")"
+_evalcache github-copilot-cli alias -- "$0"

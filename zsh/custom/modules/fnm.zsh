@@ -1,1 +1,1 @@
-eval $(fnm env)
+_evalcache fnm env
