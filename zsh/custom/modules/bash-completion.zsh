@@ -1,3 +1,3 @@
-if [ "$(uname)" = "Darwin" ]; then
-  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-fi
+[ ! -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ] && return
+source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+autoload compinit && compinit
