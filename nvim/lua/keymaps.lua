@@ -1,7 +1,3 @@
--- See `:help vim.keymap.set()`
-
--- [[ General ]]
-
 -- Keymaps for better default experience
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
