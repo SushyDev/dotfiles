@@ -19,3 +19,11 @@ ln -s $DOTFILES/nvim $HOME/.config/nvim
 echo "Updating kitty"
 [ -d $HOME/.config/kitty ] && mv $HOME/.config/kitty $HOME/.config/.bak/kitty
 ln -s $DOTFILES/kitty $HOME/.config/kitty
+
+echo "Updating tmux"
+[ -d $HOME/.config/tmux ] && mv $HOME/.config/tmux $HOME/.config/.bak/tmux
+ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
+
+echo "Old dotfiles are moved to $HOME/.config/.bak"
+echo "Please restart your shell."
+echo "Finished."

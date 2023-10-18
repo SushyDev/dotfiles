@@ -29,7 +29,7 @@ _new() {
 compdef _new new
 
 function dev() {
-	PROJECT=$(ls $PROJECTS | fzf --height 30%)
+	PROJECT=$(ls $PROJECTS | fzf --height 30% --reverse)
 	[ -z "$PROJECT" ] || new $PROJECTS/$PROJECT
 }
 
