@@ -7,6 +7,3 @@ eval "$(pkgx --shellcode)"
 [ ! $(command -v fzf) ] && env +fzf
 [ ! $(command -v rg) ] && env +rg
 [ ! $(command -v nvim) ] && env +neovim.io
-
-[ ! $(command -v php) ] && env +php
-[ ! $(command -v node) ] && env +node@20
