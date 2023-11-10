@@ -1,5 +1,4 @@
 **/.DS_Store
-zsh/.zcompdump
-zsh/.zprofile
-zsh/.zsh_history
-zsh/.zsh_sessions
+zsh/*
+!zsh/.zshrc
+!zsh/custom;
