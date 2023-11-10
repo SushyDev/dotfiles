@@ -2,9 +2,6 @@
 
 autoload -U compinit && compinit -u
 
-function _init_comp() {
-  fpath=($ZSH_CUSTOM/completions $fpath)
-  echo "fpath: $fpath"
+fpath+=($ZSH_CUSTOM/completions $fpath)
 
-  _evalcache fnm completions
-}
+[ -d "$HOME/.config/completions" ] && fpath+=("$HOME/.config/completions")

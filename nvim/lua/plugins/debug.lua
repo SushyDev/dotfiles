@@ -18,9 +18,6 @@ return {
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
-
-    -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
   },
   config = function()
     local dap = require 'dap'
@@ -33,7 +30,19 @@ return {
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
-      handlers = {},
+      handlers = {
+        go = function(config)
+          -- confgure configurations
+          config.configurations = {
+            {
+              type = 'go',
+              name = 'Debug a',
+              request = 'launch',
+              program = '${file}',
+            },
+          }
+        end,
+      },
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
@@ -46,7 +55,8 @@ return {
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end,
+      { desc = 'Debug: Set Breakpoint' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -87,7 +97,36 @@ return {
         port = 9003,
         pathMappings = {
           ["/var/www/html"] = "${workspaceFolder}"
+        }
       }
     }
-} end,
+
+    dap.configurations.twig = {
+      {
+        type = "php",
+        request = "launch",
+        name = "Listen for Xdebug",
+        port = 9003,
+        pathMappings = {
+          ["/var/www/html"] = "${workspaceFolder}"
+        }
+      }
+    }
+
+    dap.adapters.delve = {
+      type = 'server',
+      port = '2345',
+      executable = {
+        command = vim.fn.exepath('dlv'),
+        args = { 'dap', '-l', '127.0.0.1:2345' },
+      },
+    }
+
+    table.insert(dap.configurations.go, {
+      type = "delve",
+      name = "Attach remote",
+      request = "attach",
+      mode = "remote",
+    })
+  end,
 }

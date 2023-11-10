@@ -29,8 +29,8 @@ _new() {
 compdef _new new
 
 function dev() {
-	PROJECT=$(ls $PROJECTS | fzf --height 30% --reverse)
-	[ -z "$PROJECT" ] || new $PROJECTS/$PROJECT
+	PROJECT=$(find $PROJECTS -mindepth 1 -maxdepth 1 -type d | fzf --height 30% --reverse)
+	[ -z "$PROJECT" ] || new $PROJECT
 }
 
 compdef {} dev

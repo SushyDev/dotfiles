@@ -6,11 +6,18 @@ source "$ZSH_CUSTOM/lib/evalcache.zsh"
 source "$ZSH_CUSTOM/lib/init-completions.zsh"
 
 # Modules
-source "$ZSH_CUSTOM/modules/brew.zsh"
+source "$ZSH_CUSTOM/modules/pkgx.zsh"
+
+[ ! $(command -v tmux) ] && env +tmux
+
+[ ! $(command -v nvim) ] && env +neovim.io
+[ ! $(command -v fzf) ] && env +fzf
+[ ! $(command -v rg) ] && env +rg
+
+[ ! $(command -v php) ] && env +php
+[ ! $(command -v node) ] && env +node@20
+
 source "$ZSH_CUSTOM/modules/tmux.zsh"
-source "$ZSH_CUSTOM/modules/bash-completion.zsh"
-# source "$ZSH_CUSTOM/modules/nvm.zsh"
-source "$ZSH_CUSTOM/modules/fnm.zsh"
 source "$ZSH_CUSTOM/modules/github-copilot.zsh"
 
 # Lib
@@ -28,6 +35,8 @@ zstyle '*:compinit' arguments -u
 source "$ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 source "$ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 source "$ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+SSH_AGENT_SOCK="$HOME/.1password/agent.sock"
 
 # Load user zshrc
 [ -r "$HOME/.zshrc" ] && source "$HOME/.zshrc"
