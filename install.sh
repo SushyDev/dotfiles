@@ -1,12 +1,14 @@
-#! /bin/zsh
 DOTFILES=$(cd $(dirname $0); pwd)
 
 echo "Entrypoint: $DOTFILES"
 
+echo "Pulling submodules"
+git submodule update --init --recursive
+
 echo "Updating zsh"
 [ -e $HOME/.zprofile ] && mv $HOME/.zprofile $HOME/.zprofile.bak
 echo "export DOTFILES=$DOTFILES" >> $HOME/.zprofile
-echo "ZDOTDIR=$DOTFILES/zsh" >> $HOME/.zprofile
+echo "ZDOTDIR=\$DOTFILES/zsh" >> $HOME/.zprofile
 
 [ ! -d $HOME/.config/.bak ] && mkdir $HOME/.config/.bak
 
@@ -22,9 +24,9 @@ echo "Updating tmux"
 [ -d $HOME/.config/tmux ] && mv $HOME/.config/tmux $HOME/.config/.bak/tmux
 ln -s $DOTFILES/tmux $HOME/.config/tmux
 
-echo "Old dotfiles are moved to $HOME/.config/.bak"
-echo "Please restart your shell."
-echo "Finished."
+echo "Moving old .zshrc"
+[ -e $HOME/.zshrc ] && mv $HOME/.zshrc $HOME/.zshrc.bak
 
-source $HOME/.zprofile
-source $DOTFILES/zsh/.zshrc
+echo "Old dotfiles are moved to $HOME/.config/.bak"
+
+echo "Reload shell"
