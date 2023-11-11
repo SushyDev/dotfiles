@@ -14,14 +14,18 @@ Utilizing the power of PKGX to make these dotfiles ultra portable, NO depenencie
 
 ## Curious yet?
 Try it out on Github Codespaces
+
+Configure your terminal profile to start as interactive login shell
+```json
+"terminal.integrated.profiles.linux": {
+    "zsh": {
+        "path": "zsh",
+        "args": ["-l", "-i"]
+    },
+}
 ```
-echo Remove GH Codespaces oh-my-zsh
-rm ~/.zshrc
-echo Pull submodules
-git submodule update --init --recursive
-echo Install
-./install.sh
-```
+
+Either [configure your dotfiles for codespaces](https://github.com/settings/codespaces) to this repo or start a codespace in this repo and run the install script
 
 ### ZSH install
 Update your `~/.zprofile`:
