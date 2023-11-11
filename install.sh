@@ -6,7 +6,7 @@ read -p "Continue? (y/n): " yn
 case "$yn" in [yY]*) ;; *) echo "Abort." ; exit ;; esac
 
 echo "Updating zsh"
-mv $HOME/.zprofile $HOME/.zprofile.bak
+[ -e $HOME/.zprofile ] && mv $HOME/.zprofile $HOME/.zprofile.bak
 echo "export DOTFILES=$DOTFILES" >> $HOME/.zprofile
 echo "ZDOTDIR=$DOTFILES/zsh" >> $HOME/.zprofile
 
@@ -22,8 +22,12 @@ ln -s $DOTFILES/kitty $HOME/.config/kitty
 
 echo "Updating tmux"
 [ -d $HOME/.config/tmux ] && mv $HOME/.config/tmux $HOME/.config/.bak/tmux
-ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
+ln -s $DOTFILES/tmux $HOME/.config/tmux
 
 echo "Old dotfiles are moved to $HOME/.config/.bak"
 echo "Please restart your shell."
 echo "Finished."
+
+source $HOME/.zprofile
+source $HOME/.zshrc
+source $DOTFILES/zsh/.zshrc
