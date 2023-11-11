@@ -122,6 +122,7 @@ return {
       },
     }
 
+    dap.configurations.go = dap.configurations.go or {}
     table.insert(dap.configurations.go, {
       type = "delve",
       name = "Attach remote",

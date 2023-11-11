@@ -12,6 +12,17 @@ Tools used/configured:
 ## Ultra portable
 Utilizing the power of PKGX to make these dotfiles ultra portable, NO depenencies are required. It will utilize your installed packages and any package you are missing will be filled in by pkgx for your current shell session. This means that if for example you already have `tmux` or `neovim` installed these dotfiles will utilize them however if they are missing you won't have to install them or take any action at all! (Of course you will still need zsh and the terminal app)
 
+## Curious yet?
+Try it out on Github Codespaces
+```
+echo Remove GH Codespaces oh-my-zsh
+rm ~/.zshrc
+echo Pull submodules
+git submodule update --init --recursive
+echo Install
+./install.sh
+```
+
 ### ZSH install
 Update your `~/.zprofile`:
 ```sh
