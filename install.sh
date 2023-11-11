@@ -1,9 +1,7 @@
+#! /bin/zsh
 DOTFILES=$(cd $(dirname $0); pwd)
 
 echo "Entrypoint: $DOTFILES"
-
-read -p "Continue? (y/n): " yn
-case "$yn" in [yY]*) ;; *) echo "Abort." ; exit ;; esac
 
 echo "Updating zsh"
 [ -e $HOME/.zprofile ] && mv $HOME/.zprofile $HOME/.zprofile.bak
@@ -29,5 +27,4 @@ echo "Please restart your shell."
 echo "Finished."
 
 source $HOME/.zprofile
-source $HOME/.zshrc
 source $DOTFILES/zsh/.zshrc
