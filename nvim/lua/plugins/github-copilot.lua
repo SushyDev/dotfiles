@@ -3,7 +3,7 @@ local function all_trim(s)
 end
 
 local function get_path()
-  local handle = io.popen("pkgx +node@20 which node")
+  local handle = io.popen("pkgx +node@20 -- which node")
   if not handle then
     return nil
   end

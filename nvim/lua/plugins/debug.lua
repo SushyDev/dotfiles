@@ -30,19 +30,7 @@ return {
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
-      handlers = {
-        go = function(config)
-          -- confgure configurations
-          config.configurations = {
-            {
-              type = 'go',
-              name = 'Debug a',
-              request = 'launch',
-              program = '${file}',
-            },
-          }
-        end,
-      },
+      handlers = {},
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
