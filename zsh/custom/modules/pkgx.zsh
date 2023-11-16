@@ -1,4 +1,4 @@
-[ ! "$(command -v pkgx)" ] && eval "$(curl -Ssf https://pkgx.sh)"
+[ ! "$(command -v pkgx)" ] && sudo zsh -c 'eval "$(curl -Ssf https://pkgx.sh)"'
 
 eval "$(pkgx --shellcode)"
 

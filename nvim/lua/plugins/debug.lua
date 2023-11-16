@@ -1,11 +1,4 @@
 ---@diagnostic disable: missing-fields
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
 
 return {
   -- NOTE: Yes, you can install new plugins here!
@@ -43,8 +36,7 @@ return {
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end,
-      { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, { desc = 'Debug: Set Breakpoint' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -77,6 +69,7 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
     dap.listeners.before.disconnect['dapui_config'] = dapui.close
 
+    dap.configurations.php = dap.configurations.php or {}
     dap.configurations.php = {
       {
         type = "php",
@@ -89,26 +82,14 @@ return {
       }
     }
 
-    dap.configurations.twig = {
-      {
-        type = "php",
-        request = "launch",
-        name = "Listen for Xdebug",
-        port = 9003,
-        pathMappings = {
-          ["/var/www/html"] = "${workspaceFolder}"
-        }
-      }
-    }
-
-    dap.adapters.delve = {
-      type = 'server',
-      port = '2345',
-      executable = {
-        command = vim.fn.exepath('dlv'),
-        args = { 'dap', '-l', '127.0.0.1:2345' },
-      },
-    }
+    -- dap.adapters.delve = {
+    --   type = 'server',
+    --   port = '2345',
+    --   executable = {
+    --     command = vim.fn.exepath('dlv'),
+    --     args = { 'dap', '-l', '127.0.0.1:2345' },
+    --   },
+    -- }
 
     dap.configurations.go = dap.configurations.go or {}
     table.insert(dap.configurations.go, {

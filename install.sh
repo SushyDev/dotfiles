@@ -29,4 +29,4 @@ echo "Moving old .zshrc"
 
 echo "Old dotfiles are moved to $HOME/.config/.bak"
 
-echo "Reload shell"
+echo "Reload your shell"
