@@ -40,3 +40,10 @@ function ch() {
 }
 
 compdef {} ch
+
+function clean-pkgx() {
+	sudo rm /usr/local/bin/pkgx
+	rm -rf ~/.pkgx
+}
+
+compdef {} clean-pkgx

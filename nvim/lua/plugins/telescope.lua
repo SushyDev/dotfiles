@@ -8,6 +8,7 @@ return {
   config = function()
     require('telescope').setup {
       defaults = {
+        wrap_results = true,
         mappings = {
           i = {
             ['<C-u>'] = false,
@@ -56,5 +57,18 @@ return {
     vim.keymap.set('n', '<leader>svg', function()
       require('telescope.builtin').live_grep(vendor_grep)
     end, { desc = '[S]earch [V]endor [G]rep' })
+
+    -- Wrap results for all file types except help
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "TelescopePreviewerLoaded",
+      callback = function(args)
+        -- if args.data.filetype ~= "help" then
+        --   vim.wo.number = true
+        -- elseif args.data.bufname:match("*.csv") then
+        --   vim.wo.wrap = false
+        -- end
+        vim.wo.wrap = true
+      end,
+    })
   end,
 }
