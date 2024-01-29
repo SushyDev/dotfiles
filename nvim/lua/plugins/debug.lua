@@ -82,14 +82,14 @@ return {
       }
     }
 
-    -- dap.adapters.delve = {
-    --   type = 'server',
-    --   port = '2345',
-    --   executable = {
-    --     command = vim.fn.exepath('dlv'),
-    --     args = { 'dap', '-l', '127.0.0.1:2345' },
-    --   },
-    -- }
+    dap.adapters.delve = {
+      type = 'server',
+      port = '2345',
+      executable = {
+        command = vim.fn.exepath('dlv'),
+        args = { 'dap', '-l', '127.0.0.1:2345' },
+      },
+    }
 
     dap.configurations.go = dap.configurations.go or {}
     table.insert(dap.configurations.go, {

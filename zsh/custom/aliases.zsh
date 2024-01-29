@@ -1,3 +1,5 @@
 alias vim="nvim"
 alias x86="arch -x86_64 zsh"
+alias stop="tmux kill-server"
+alias reload="source $DOTFILES/zsh/.zshrc"
 alias switch="tmux switch-client -t $@"
