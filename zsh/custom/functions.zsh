@@ -66,3 +66,9 @@ function init() {
 }
 
 compdef {} init
+
+function proxy() {
+	set -a && source "/Users/sushy/.proxyman/proxyman_env_automatic_setup.sh" && set +a
+}
+
+compdef {} proxy

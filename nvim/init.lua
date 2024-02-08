@@ -51,6 +51,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  twiggy_language_server = {},
 }
 
 -- Setup neovim lua configuration

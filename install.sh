@@ -3,7 +3,7 @@ DOTFILES=$(cd $(dirname $0); pwd)
 echo "Entrypoint: $DOTFILES"
 
 echo "Pulling submodules"
-git submodule update --init --recursive
+git submodule update --init --recursive --remote
 
 echo "Updating zsh"
 [ -e $HOME/.zprofile ] && mv $HOME/.zprofile $HOME/.zprofile.bak

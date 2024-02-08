@@ -24,6 +24,7 @@ zstyle '*:compinit' arguments -u
 source "$ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 source "$ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 source "$ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.zsh"
 
 # Load user zshrc
 [ -r "$HOME/.zshrc" ] && source "$HOME/.zshrc"
