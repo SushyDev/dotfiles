@@ -1,12 +1,12 @@
-[submodule "zsh/custom/plugins/zsh-autosuggestions"]
-	path = zsh/custom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "zsh/custom/plugins/zsh-autocomplete"]
-	path = zsh/custom/plugins/zsh-autocomplete
-	url = https://github.com/marlonrichert/zsh-autocomplete.git
-[submodule "zsh/custom/plugins/fast-syntax-highlighting"]
-	path = zsh/custom/plugins/fast-syntax-highlighting
-	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
-[submodule "zsh/custom/plugins/zsh-vi-mode"]
-	path = zsh/custom/plugins/zsh-vi-mode
-	url = https://github.com/jeffreytse/zsh-vi-mode.git
+[submodule "kitty"]
+	path = kitty
+	url = https://github.com/SushyDev/kitty
+[submodule "zsh"]
+	path = zsh
+	url = https://github.com/SushyDev/zsh
+[submodule "tmux"]
+	path = tmux
+	url = https://github.com/SushyDev/tmux
+[submodule "nvim"]
+	path = nvim
+	url = https://github.com/SushyDev/nvim
