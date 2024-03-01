@@ -1,12 +1,16 @@
 [submodule "kitty"]
 	path = kitty
 	url = https://github.com/SushyDev/kitty
+    branch = main
 [submodule "zsh"]
 	path = zsh
 	url = https://github.com/SushyDev/zsh
+    branch = main
 [submodule "tmux"]
 	path = tmux
 	url = https://github.com/SushyDev/tmux
+    branch = main
 [submodule "nvim"]
 	path = nvim
 	url = https://github.com/SushyDev/nvim
+    branch = main
