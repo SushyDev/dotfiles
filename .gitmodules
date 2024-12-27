@@ -1,3 +1,7 @@
+[submodule "ghostty"]
+	path = ghostty
+	url = https://github.com/SushyDev/ghostty
+    branch = main
 [submodule "kitty"]
 	path = kitty
 	url = https://github.com/SushyDev/kitty

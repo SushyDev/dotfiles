@@ -16,6 +16,10 @@ echo "Updating nvim"
 [ -d $HOME/.config/nvim ] && mv $HOME/.config/nvim $HOME/.config/.bak/nvim
 ln -s $DOTFILES/nvim $HOME/.config/nvim
 
+echo "Updating ghostty"
+[ -d $HOME/.config/ghostty ] && mv $HOME/.config/ghostty $HOME/.config/.bak/ghostty
+ln -s $DOTFILES/ghostty $HOME/.config/ghostty
+
 echo "Updating kitty"
 [ -d $HOME/.config/kitty ] && mv $HOME/.config/kitty $HOME/.config/.bak/kitty
 ln -s $DOTFILES/kitty $HOME/.config/kitty
