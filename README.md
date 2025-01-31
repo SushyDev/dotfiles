@@ -49,3 +49,6 @@ ln -s $DOTFILES/nvim $HOME/.config/nvim
 ```sh
 ln -s $DOTFILES/kitty $HOME/.config/kitty
 ```
+
+### 1Password
+[Make sure you have configured the global SSH_AUTH_SOCK](https://developer.1password.com/docs/ssh/agent/compatibility/#configure-ssh_auth_sock-globally-for-every-client)
