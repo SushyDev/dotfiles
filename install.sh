@@ -2,6 +2,6 @@ echo "Pulling submodules"
 git submodule update --init --recursive --remote
 
 echo "Stowing config"
-pkgx stow . --adopt
+pkgx stow .config -t ~/.config
 
 echo "Reload your shell"
