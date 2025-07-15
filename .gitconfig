@@ -1,10 +1,12 @@
-[user]
-        email = xsushy@hotmail.com
-        name = SushyDev
-        signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR
-[gpg]
-        format = ssh
-[gpg "ssh"]
-        program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[push]
+	authSetupRemote = true
 [commit]
-        gpgsign = true
+	gpgsign = true
+[user]
+	email = xsushy@hotmail.com
+	name = xSushy
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

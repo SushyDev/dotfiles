@@ -1,20 +1,20 @@
-[submodule "ghostty"]
-	path = ghostty
-	url = https://github.com/SushyDev/ghostty
-    branch = main
-[submodule "kitty"]
-	path = kitty
-	url = https://github.com/SushyDev/kitty
-    branch = main
-[submodule "zsh"]
-	path = zsh
-	url = https://github.com/SushyDev/zsh
-    branch = main
-[submodule "tmux"]
-	path = tmux
-	url = https://github.com/SushyDev/tmux
-    branch = main
-[submodule "nvim"]
-	path = nvim
-	url = https://github.com/SushyDev/nvim
-    branch = main
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/sushydev/nvim
+	branch = main
+[submodule ".config/ghostty"]
+	path = .config/ghostty
+	url = https://github.com/sushydev/ghostty
+	branch = main
+[submodule ".config/kitty"]
+	path = .config/kitty
+	url = https://github.com/sushydev/kitty
+	branch = main
+[submodule ".config/zsh"]
+	path = .config/zsh
+	url = https://github.com/sushydev/zsh
+	branch = main
+[submodule ".config/tmux"]
+	path = .config/tmux
+	url = https://github.com/sushydev/tmux
+	branch = main
