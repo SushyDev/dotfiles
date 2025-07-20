@@ -1,12 +1,34 @@
+[core]
+	preloadindex = true
+
+[advice]
+	statusHints = false
+
 [push]
 	authSetupRemote = true
+
+[pull]
+	rebase = true
+
+[rebase]
+	missingCommitsCheck = warn
+
 [commit]
 	gpgsign = true
+
 [user]
 	email = xsushy@hotmail.com
-	name = xSushy
+	name = SushyDev
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR
+
 [gpg]
 	format = ssh
+
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[url "git@github.com:"]
+	insteadOf = "github:"
+
+[url "git@github.com:SushyDev/"]
+	insteadOf = "sushydev:"
