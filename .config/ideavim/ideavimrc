@@ -1,0 +1,29 @@
+let mapleader=" "
+set scrolloff=999
+set relativenumber
+set mouse-=a
+set hlsearch
+
+nmap <leader>? <Action>(RecentFiles)
+nmap <leader>ga <Action>(SearchEverywhere)
+nmap <leader>gc <Action>(GotoClass)
+nmap <leader>gf <Action>(GotoFile)
+nmap <leader>gs <Action>(GotoSymbol)
+nmap <leader>sag <Action>(SearchEverywhere)
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>sg <Action>(TextSearchAction)
+
+nmap gc <Action>(CommentByLineComment)
+vmap gc <Action>(CommentByLineComment)<Esc>
+
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+
+nmap <S-k> <Action>(ShowHoverInfo)
+nmap <S-h> <Action>(ShowQuickDefinition)
+
+imap <C-k> <Action>(copilot.applyInlays)
+imap <C-l> <Action>(copilot.applyInlaysNextWord)
+imap <C-s> <Action>(EditorChooseLookupItem)
+
+" vmap J :m '>+1<CR>gv=gv
+" vmap K :m '<-2<CR>gv=gv
