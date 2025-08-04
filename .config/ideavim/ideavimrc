@@ -1,8 +1,13 @@
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'machakann/vim-highlightedyank'
+
 let mapleader=" "
 set scrolloff=999
 set relativenumber
 set mouse-=a
 set hlsearch
+set smartcase
 
 nmap <leader>? <Action>(RecentFiles)
 nmap <leader>ga <Action>(SearchEverywhere)

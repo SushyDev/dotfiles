@@ -1,5 +1,6 @@
 [core]
 	preloadindex = true
+	hooksPath = ~/.config/git/hooks
 
 [advice]
 	statusHints = false
@@ -16,11 +17,6 @@
 [commit]
 	gpgsign = true
 
-[user]
-	email = xsushy@hotmail.com
-	name = SushyDev
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR
-
 [gpg]
 	format = ssh
 
@@ -32,3 +28,6 @@
 
 [url "git@github.com:SushyDev/"]
 	insteadOf = "sushydev:"
+
+[include]
+	path = ~/.config/git/user
