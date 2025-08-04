@@ -1,4 +1,1 @@
 .DS_Store
-zsh/*
-!zsh/.zshrc
-!zsh/custom
