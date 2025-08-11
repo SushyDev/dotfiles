@@ -6,7 +6,7 @@
 	statusHints = false
 
 [push]
-	authSetupRemote = true
+	autoSetupRemote = true
 
 [pull]
 	rebase = true
