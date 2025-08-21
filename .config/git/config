@@ -2,6 +2,9 @@
 	preloadindex = true
 	hooksPath = ~/.config/git/hooks
 
+[diff]
+	external = difft
+
 [advice]
 	statusHints = false
 
