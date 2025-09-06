@@ -30,5 +30,8 @@ imap <C-k> <Action>(copilot.applyInlays)
 imap <C-l> <Action>(copilot.applyInlaysNextWord)
 imap <C-s> <Action>(EditorChooseLookupItem)
 
+" Best way to preview inline diff i've found so far
+nmap <C-l> <Action>(Vcs.ShowDiffChangedLines)
+
 " vmap J :m '>+1<CR>gv=gv
 " vmap K :m '<-2<CR>gv=gv
