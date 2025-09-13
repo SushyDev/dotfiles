@@ -1,37 +1,50 @@
+#!/usr/bin/env bash
+
 readonly PATH="$PATH";
-readonly XDG_HOME="$XDG_HOME:${HOME}/.config";
+readonly XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}";
+readonly XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}";
 
-echo $PATH;
+readonly DOTFILES_DIR="${DOTFILES_DIR:-$(cd $(dirname $0) && pwd)}";
+readonly DEACTIVATE_DIR="$XDG_STATE_HOME/dotfiles";
+readonly DEACTIVATE_SCRIPT="$DEACTIVATE_DIR/deactivate.sh";
 
-readonly DOTFILES_DIR=$(cd $(dirname $0) && pwd);
-readonly STATE_FILE="$XDG_HOME/dotfiles/stow";
+mkdir -p "$DEACTIVATE_DIR";
 
-mkdir -p $(dirname $STATE_FILE);
-
-if [ -f $STATE_FILE ]; then
-	stow \
-		--dir=$(cat $STATE_FILE) \
-		--delete \
-		--no-folding \
-		--ignore='\.DS_Store' \
-		--ignore='zsh' \
-		--ignore='git' \
-		--ignore='nvim/lazy-lock\.json' \
-		.config -t $XDG_HOME;
-
-	rm $STATE_FILE;
+if [ -f "$DEACTIVATE_SCRIPT" ]; then
+	bash "$DEACTIVATE_SCRIPT";
+	rm "$DEACTIVATE_SCRIPT";
 fi
 
-git submodule update --init --recursive --remote;
+mkdir -p "$XDG_CONFIG_HOME";
 
 stow \
-	--dir=$DOTFILES_DIR \
+	--dir="$DOTFILES_DIR" \
 	--restow \
 	--no-folding \
 	--ignore='\.DS_Store' \
 	--ignore='zsh' \
 	--ignore='git' \
 	--ignore='nvim/lazy-lock\.json' \
-	.config -t $XDG_HOME;
+	.config -t "$XDG_CONFIG_HOME";
 
-echo $DOTFILES_DIR > $STATE_FILE;
+cat > "$DEACTIVATE_SCRIPT" << 'EOF'
+#!/usr/bin/env bash
+
+readonly DOTFILES_DIR="$DOTFILES_DIR_PLACEHOLDER";
+readonly XDG_CONFIG_HOME="$XDG_CONFIG_HOME_PLACEHOLDER";
+
+stow \
+	--dir="$DOTFILES_DIR" \
+	--delete \
+	--no-folding \
+	--ignore='\.DS_Store' \
+	--ignore='zsh' \
+	--ignore='git' \
+	--ignore='nvim/lazy-lock\.json' \
+	.config -t "$XDG_CONFIG_HOME";
+EOF
+
+sed -i "s|\$DOTFILES_DIR_PLACEHOLDER|$DOTFILES_DIR|g" "$DEACTIVATE_SCRIPT";
+sed -i "s|\$XDG_CONFIG_HOME_PLACEHOLDER|$XDG_CONFIG_HOME|g" "$DEACTIVATE_SCRIPT";
+
+chmod +x "$DEACTIVATE_SCRIPT";

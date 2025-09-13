@@ -1,10 +1,7 @@
 {
 	description = "dotfiles";
-	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-	};
 
-	outputs = { self, nixpkgs }:
+	outputs = { self }:
 		let
 			dotfiles = ./.;
 
@@ -35,7 +32,9 @@
 
 					home.activation.installDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
 						PATH="${pkgs.git}/bin:${pkgs.stow}/bin:$PATH" \
-						XDG_HOME_DIR="${config.xdg.configHome}" \
+						DOTFILES_DIR="${dotfiles}" \
+						XDG_CONFIG_HOME="${config.xdg.configHome}" \
+						XDG_STATE_HOME="${config.xdg.stateHome}" \
 						${dotfiles}/activate.sh;
 					'';
 
@@ -55,9 +54,5 @@
 					};
 				};
 			};
-
-			modules.home-manager = self.homeManagerModules.default;
 		};
 }
-
-
