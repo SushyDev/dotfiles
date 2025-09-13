@@ -1,24 +1,24 @@
 [submodule ".config/ghostty"]
 	path = .config/ghostty
-	url = git@github.com:sushydev/ghostty
+	url = https://github.com/sushydev/ghostty
 	branch = main
 [submodule ".config/git"]
 	path = .config/git
-	url = git@github.com:sushydev/git
+	url = https://github.com/sushydev/git
 	branch = main
 [submodule ".config/ideavim"]
 	path = .config/ideavim
-	url = git@github.com:sushydev/ideavim
+	url = https://github.com/sushydev/ideavim
 	branch = main
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = git@github.com:sushydev/nvim
+	url = https://github.com/sushydev/nvim
 	branch = main
 [submodule ".config/tmux"]
 	path = .config/tmux
-	url = git@github.com:sushydev/tmux
+	url = https://github.com/sushydev/tmux
 	branch = main
 [submodule ".config/zsh"]
 	path = .config/zsh
-	url = git@github.com:sushydev/zsh
+	url = https://github.com/sushydev/zsh
 	branch = main
