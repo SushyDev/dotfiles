@@ -2,7 +2,7 @@
 
 Minimal dotfiles optimizing efficiency, screen real-estate and removing distractions. This repository contains configurations for various development tools to create a cohesive and efficient workflow. You can find additional README's inside each repository (Look in the .config directory)
 
-## Plugins
+## Tools
 
 - **[zsh](https://github.com/zsh-users/zsh)** - Shell with productivity enhancements
   - Plugins: fast-syntax-highlighting, zsh-autocomplete, zsh-autosuggestions
