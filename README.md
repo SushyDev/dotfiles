@@ -1,44 +1,23 @@
 # Dotfiles
 
-Minimal dotfiles optimizing efficiency, screen real-estate and removing distractions. This repository contains configurations for various development tools to create a cohesive and efficient workflow. You can find additional README's inside each repository (Look in the .config directory)
+Minimal dotfiles optimizing efficiency, screen real-estate and removing distractions.
+You can find additional README's inside each repository (Look in the .config directory)
 
 ## Tools
 
-- **[zsh](https://github.com/zsh-users/zsh)** - Shell with productivity enhancements
+- **[zsh](https://github.com/zsh-users/zsh)**
   - Plugins: fast-syntax-highlighting, zsh-autocomplete, zsh-autosuggestions
-- **[tmux](https://github.com/tmux/tmux)** - Terminal multiplexer with vim-like keybindings
+- **[tmux](https://github.com/tmux/tmux)**
   - Themes: monochromatic, vapor
-- **[neovim](https://neovim.io)** - Text editor with extensive plugin ecosystem
+- **[neovim](https://neovim.io)**
   - Plugin manager: lazy.nvim
   - Core plugins: telescope, lsp, treesitter, copilot, git integration, debugging, tmux integration
-- **[ghostty](https://ghostty.org/)** - Fast, native terminal emulator
-- **[git](https://git-scm.com/)** - Version control with enhanced diff visualization
+- **[ghostty](https://ghostty.org/)**
+- **[git](https://git-scm.com/)**
   - Uses difftastic for improved diffs
   - Custom hooks for commit message formatting
-- **[ideavim](https://github.com/JetBrains/ideavim)** - Vim emulation in IntelliJ IDEA
+- **[ideavim](https://github.com/JetBrains/ideavim)**
   - Plugins: vim-surround, nerdtree, vim-highlightedyank
-
-## Integrations
-
-- **GitHub Codespaces**: Try most configs such as tmux, neovim and the shell in Codespaces
-  - Configure your terminal profile to start as interactive login shell:
-    ```json
-    "terminal.integrated.profiles.linux": {
-        "zsh": {
-            "path": "zsh",
-            "args": ["-l", "-i"]
-        },
-    }
-    ```
-  - Or [configure your dotfiles for codespaces](https://github.com/settings/codespaces) to this repo
-  - Start a codespace in this repo and run the [activation script](scripts/activate.sh)
-- **Nix**: Declarative dependency management and configuration
-
-## Configuration
-
-- Custom configurations for each tool optimized for productivity
-- Vim-like keybindings across tools
-- Theme consistency with monochromatic and vapor options
 
 ## System Dependencies
 
@@ -103,3 +82,17 @@ Install these using your system's package manager (apt, brew, etc.) before proce
 
 You can use [scripts/activate.sh](scripts/activate.sh) to setup the symlinks for all the dotfiles using `stow`,
 it will also write an uninstall script in `$XDG_CONFIG_HOME/dotfiles/uninstall.sh`
+
+### Sight seeing
+
+Try most configs such as tmux, neovim and the shell in Codespaces
+  - Configure your terminal profile to start as interactive login shell:
+    ```json
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "zsh",
+            "args": ["-l", "-i"]
+        },
+    }
+    ```
+  - Or [configure your dotfiles for codespaces](https://github.com/settings/codespaces) to this repo
