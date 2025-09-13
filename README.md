@@ -100,3 +100,6 @@ This automatically installs dependencies (git, neovim, tmux, etc.) and sets up a
 ### Manual
 For manual installation, you will need to ensure that the required dependencies are installed on your system. The dotfiles will utilize your installed packages, but any missing dependencies must be installed manually.
 Install these using your system's package manager (apt, brew, etc.) before proceeding with the dotfiles setup.
+
+You can use [scripts/activate.sh](scripts/activate.sh) to setup the symlinks for all the dotfiles using `stow`,
+it will also write an uninstall script in `$XDG_CONFIG_HOME/dotfiles/uninstall.sh`
