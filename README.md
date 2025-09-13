@@ -1,21 +1,90 @@
-The fanciest least fancy dotfiles you'll ever find, configuration focused on staying minimal whilst enabling great power, flexibility and speed in your terminal.
+# Dotfiles
 
-Tools used/configured:
-- [kitty](https://sw.kovidgoyal.net/kitty/)
-- [zsh](https://github.com/zsh-users/zsh)
-- [pkgx](https://pkgx.sh)
-- [tmux](https://github.com/tmux/tmux)
-- [fzf](https://github.com/junegunn/fzf)
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [neovim](https://neovim.io)
+Minimal dotfiles optimizing efficiency, screen real-estate and removing distractions
 
-## Ultra portable
-Utilizing the power of PKGX to make these dotfiles ultra portable, NO depenencies are required. It will utilize your installed packages and any package you are missing will be filled in by pkgx for your current shell session. This means that if for example you already have `tmux` or `neovim` installed these dotfiles will utilize them however if they are missing you won't have to install them or take any action at all! (Of course you will still need zsh and the terminal app)
+## Tools Configured
+
+- **[zsh](https://github.com/zsh-users/zsh)** - Shell with productivity enhancements
+  - Plugins: fast-syntax-highlighting, zsh-autocomplete, zsh-autosuggestions
+- **[tmux](https://github.com/tmux/tmux)** - Terminal multiplexer with vim-like keybindings
+  - Themes: monochromatic, vapor
+- **[neovim](https://neovim.io)** - Text editor with extensive plugin ecosystem
+  - Plugin manager: lazy.nvim
+  - Core plugins: telescope, lsp, treesitter, copilot, git integration, debugging, tmux integration
+- **[ghostty](https://ghostty.org/)** - Fast, native terminal emulator
+- **[git](https://git-scm.com/)** - Version control with enhanced diff visualization
+  - Uses difftastic for improved diffs
+  - Custom hooks for commit message formatting
+- **[ideavim](https://github.com/JetBrains/ideavim)** - Vim emulation in IntelliJ IDEA
+  - Plugins: vim-surround, nerdtree, vim-highlightedyank
+
+You can find additional README's inside each repository (Look in the .config directory)
+
+## System Dependencies
+
+### Required Dependencies
+
+These must be installed for the dotfiles to function properly:
+
+- **zsh** - Core shell environment
+- **git** - Version control system (required for git integration in zsh prompt and neovim)
+- **difftastic** - Enhanced diff visualization for git
+- **tmux** - Terminal multiplexer
+- **neovim** - Primary text editor
+- **nodejs** - Required for Neovim LSP servers (TypeScript/JavaScript/Vue), ESLint, CSS/HTML LSP, and GitHub Copilot
+- **ripgrep (rg)** - Required for Neovim Telescope live grep functionality
+- **make** - Required to build Neovim's telescope-fzf-native plugin for improved performance
+
+### Optional Dependencies
+
+These enhance functionality but are not strictly required:
+
+- **nix** - Package manager for declarative dependency management and zsh integration
+- **fd** - Faster file finding for Neovim Telescope (falls back to `find` if not available)
+- **fzf** - Fuzzy finder for project selection in zsh session management
+- **fnm** - Node.js version manager (alternative to nvm)
+- **Rust** - Required only for Rust LSP (rust_analyzer) and fuzzy matching in Neovim's blink.cmp
+- **Go** - Required only for Go LSP (gopls)
+
+## Installation
+
+### Nix (Recommended - Simplest)
+If you use Nix with home-manager:
+
+1. Add this flake to your `flake.nix`:
+```nix
+{
+  inputs.dotfiles = {
+    type = "git";
+    url = "ssh://git@github.com/sushydev/dotfiles";
+    submodules = true;
+  };
+
+  outputs = { self, dotfiles, ... }: {
+    # ... your existing outputs
+  };
+}
+```
+
+2. In your `home.nix`, add:
+```nix
+{
+  imports = [ inputs.dotfiles.homeManagerModules.default ];
+
+  dotfiles.enable = true;
+}
+```
+
+This automatically installs dependencies (git, neovim, tmux, etc.) and sets up all symlinks.
+
+### Manual
+For manual installation, you will need to ensure that the required dependencies are installed on your system. The dotfiles will utilize your installed packages, but any missing dependencies must be installed manually.
+Install these using your system's package manager (apt, brew, etc.) before proceeding with the dotfiles setup.
 
 ## Curious yet?
-Try it out on Github Codespaces
+You can try most configs such as tmux, neovim and the shell in Github Codespaces.
 
-Configure your terminal profile to start as interactive login shell
+Configure your terminal profile to start as interactive login shell (or just start it yourself)
 ```json
 "terminal.integrated.profiles.linux": {
     "zsh": {
@@ -25,30 +94,4 @@ Configure your terminal profile to start as interactive login shell
 }
 ```
 
-Either [configure your dotfiles for codespaces](https://github.com/settings/codespaces) to this repo or start a codespace in this repo and run the install script
-
-### ZSH install
-Update your `~/.zprofile`:
-```sh
-export PROJECTS="/path/to/projects"
-export DOTFILES="/path/to/dotfiles"
-ZDOTDIR=$DOTFILES/zsh
-```
-
-### Tmux install
-```sh
-ln -s $DOTFILES/tmux $HOME/.config/tmux
-```
-
-### NVIM install
-```sh
-ln -s $DOTFILES/nvim $HOME/.config/nvim
-```
-
-### Kitty install
-```sh
-ln -s $DOTFILES/kitty $HOME/.config/kitty
-```
-
-### 1Password
-[Make sure you have configured the global SSH_AUTH_SOCK](https://developer.1password.com/docs/ssh/agent/compatibility/#configure-ssh_auth_sock-globally-for-every-client)
+Or [configure your dotfiles for codespaces](https://github.com/settings/codespaces) to this repo or start a codespace in this repo and run the [activation script](scripts/activate.sh)

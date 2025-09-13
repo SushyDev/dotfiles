@@ -36,4 +36,4 @@
 	path = ~/.config/git/user
 [safe]
 	directory = /private/etc/nixdarwin
-	directory = /private/etc/nixdarwin/nix-plist-manager
+	directory = /private/etc/nixos
