@@ -76,7 +76,7 @@ If you use Nix with home-manager:
 {
   inputs.dotfiles = {
     type = "git";
-    url = "ssh://git@github.com/sushydev/dotfiles";
+    url = "https://github.com/sushydev/dotfiles";
     submodules = true;
   };
 
