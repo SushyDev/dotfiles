@@ -108,6 +108,7 @@
 						enable = true;
 						enableDefaultConfig = false;
 						includes = [
+							"~/.ssh/1Password/config"
 							"~/.config/ssh/extra_config"
 						];
 						matchBlocks = {
