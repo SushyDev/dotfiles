@@ -1,6 +1,6 @@
 # Dotfiles
 
-Minimal dotfiles optimizing efficiency, screen real-estate and removing distractions.
+Minimal and opinionated dotfiles optimizing efficiency, screen real-estate and removing distractions.
 You can find additional README's inside each repository (Look in the .config directory)
 
 ## Tools

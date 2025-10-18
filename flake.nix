@@ -4,18 +4,34 @@
 	outputs = { self }: {	
 		homeManagerModules.default = { config, lib, pkgs, ... }: {
 			options = {
-				dotfiles.enable = lib.mkOption {
-					type = lib.types.bool;
-					default = false;
-					description = "Enable dotfiles";
+				dotfiles = {
+					enable = lib.mkOption {
+						type = lib.types.bool;
+						default = false;
+						description = "Enable dotfiles";
+					};
+					systemFlakePath = lib.mkOption {
+						type = lib.types.str;
+						default = "";
+						description = "Path to the system flake";
+					};
+					git = {
+						sshSignPackage = lib.mkOption {
+							type = lib.types.str;
+							default = "";
+							description = "The 1Password package to use";
+						};
+					};
 				};
 			};
 
 			config = 
 				let
 					dotfilesPath = ./.;
+					mkIfNotEmptyString = str: lib.mkIf (str != "") str;
 				in
 				lib.mkIf config.dotfiles.enable {
+					# TODO: Base dependencies off of `<module>.enabled`
 					home.packages = [
 						pkgs.difftastic
 						pkgs.fd
@@ -49,6 +65,19 @@
 								path = "${dotfilesPath}/.config/git/config";
 							}
 						];
+						extraConfig = {
+							safe.directory = mkIfNotEmptyString config.dotfiles.systemFlakePath;
+
+							gpg = {
+								format = "ssh";
+							};
+							"gpg \"ssh\"" = {
+								program = mkIfNotEmptyString config.dotfiles.git.sshSignPackage;
+							};
+							commit = {
+								gpgsign = true;
+							};
+						};
 					};
 				};
 		};
