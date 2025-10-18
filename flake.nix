@@ -12,14 +12,38 @@
 					};
 					systemFlakePath = lib.mkOption {
 						type = lib.types.str;
-						default = "";
+						default = "/etc/nixos";
 						description = "Path to the system flake";
 					};
+					zsh = {
+						enable = lib.mkOption {
+							type = lib.types.bool;
+							default = true;
+							description = "Enable zsh configuration";
+						};
+					};
 					git = {
+						enable = lib.mkOption {
+							type = lib.types.bool;
+							default = true;
+							description = "Enable git configuration";
+						};
 						sshSignPackage = lib.mkOption {
 							type = lib.types.str;
-							default = "";
+							default = lib.getExe' pkgs._1password-gui "op-ssh-sign";
 							description = "The 1Password package to use";
+						};
+					};
+					ssh = {
+						enable = lib.mkOption {
+							type = lib.types.bool;
+							default = true;
+							description = "Enable SSH configuration";
+						};
+						identityAgentPath = lib.mkOption {
+							type = lib.types.str;
+							default = "~/.1password/agent.sock";
+							description = "Path to the SSH identity agent socket";
 						};
 					};
 				};
@@ -52,13 +76,13 @@
 						${dotfilesPath}/scripts/activate.sh;
 					'';
 
-					programs.zsh = {
+					programs.zsh = lib.mkIf config.dotfiles.zsh.enable {
 						enable = true;
 						dotDir = "${config.xdg.configHome}/zsh";
 						profileExtra = ". ${dotfilesPath}/.config/zsh/.zshrc";
 					};
 
-					programs.git = {
+					programs.git = lib.mkIf config.dotfiles.git.enable {
 						enable = true;
 						includes = [
 							{
@@ -76,6 +100,19 @@
 							};
 							commit = {
 								gpgsign = true;
+							};
+						};
+					};
+
+					programs.ssh = lib.mkIf config.dotfiles.ssh.enable {
+						enable = true;
+						enableDefaultConfig = false;
+						includes = [
+							"~/.config/ssh/extra_config"
+						];
+						matchBlocks = {
+							"*" = {
+								identityAgent = mkIfNotEmptyString config.dotfiles.ssh.identityAgentPath;
 							};
 						};
 					};
