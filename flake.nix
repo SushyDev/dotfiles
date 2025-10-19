@@ -78,6 +78,7 @@
 
 					programs.zsh = lib.mkIf config.dotfiles.zsh.enable {
 						enable = true;
+						enableCompletion = false;
 						dotDir = "${config.xdg.configHome}/zsh";
 						profileExtra = ". ${dotfilesPath}/.config/zsh/.zshrc";
 					};
