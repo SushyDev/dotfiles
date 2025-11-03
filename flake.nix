@@ -80,7 +80,7 @@
 						enable = true;
 						enableCompletion = false;
 						dotDir = "${config.xdg.configHome}/zsh";
-						profileExtra = ". ${dotfilesPath}/.config/zsh/.zshrc";
+						initContent = ". ${dotfilesPath}/.config/zsh/.zshrc";
 					};
 
 					programs.git = lib.mkIf config.dotfiles.git.enable {
