@@ -78,7 +78,7 @@
 
 					programs.zsh = lib.mkIf config.dotfiles.zsh.enable {
 						enable = true;
-						enableCompletion = false;
+						enableCompletion = true;
 						dotDir = "${config.xdg.configHome}/zsh";
 						initContent = ". ${dotfilesPath}/.config/zsh/.zshrc";
 					};
@@ -109,8 +109,8 @@
 						enable = true;
 						enableDefaultConfig = false;
 						includes = [
-							"~/.ssh/1Password/config"
-							"~/.config/ssh/extra_config"
+							"${config.home.homeDirectory}/.ssh/1Password/config"
+							"${config.xdg.configHome}/ssh/extra_config"
 						];
 						matchBlocks = {
 							"*" = {
