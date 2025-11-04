@@ -22,8 +22,9 @@ stow \
 	--restow \
 	--no-folding \
 	--ignore='\.DS_Store' \
+	--ignore='.*/.*\.md' \
 	--ignore='zsh' \
-	--ignore='git' \
+	--ignore='git/config' \
 	--ignore='nvim/lazy-lock\.json' \
 	.config -t "$XDG_CONFIG_HOME";
 
@@ -38,8 +39,9 @@ stow \
 	--delete \
 	--no-folding \
 	--ignore='\.DS_Store' \
+	--ignore='.*/.*\.md' \
 	--ignore='zsh' \
-	--ignore='git' \
+	--ignore='git/config' \
 	--ignore='nvim/lazy-lock\.json' \
 	.config -t "$XDG_CONFIG_HOME";
 EOF
