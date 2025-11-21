@@ -55,7 +55,6 @@
 					mkIfNotEmptyString = str: lib.mkIf (str != "") str;
 				in
 				lib.mkIf config.dotfiles.enable {
-					# TODO: Base dependencies off of `<module>.enabled`
 					home.packages = [
 						pkgs.difftastic
 						pkgs.fd
@@ -66,7 +65,7 @@
 						pkgs.nodejs
 						pkgs.ripgrep
 						pkgs.tmux
-					];
+					] ++ lib.optional pkgs.stdenv.isLinux pkgs.wl-clipboard-rs;
 
 					home.activation.installDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
 						PATH="${pkgs.git}/bin:${pkgs.stow}/bin:$PATH" \
