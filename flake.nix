@@ -89,7 +89,7 @@
 								path = "${dotfilesPath}/.config/git/config";
 							}
 						];
-						extraConfig = {
+						settings = {
 							safe.directory = mkIfNotEmptyString config.dotfiles.systemFlakePath;
 
 							gpg = {
