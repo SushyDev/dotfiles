@@ -53,9 +53,8 @@
 				let
 					dotfilesPath = ./.;
 					mkIfNotEmptyString = str: lib.mkIf (str != "") str;
-				in
-				lib.mkIf config.dotfiles.enable {
-					home.packages = [
+
+					basePackages = [
 						pkgs.difftastic
 						pkgs.fd
 						pkgs.fnm
@@ -65,7 +64,14 @@
 						pkgs.nodejs
 						pkgs.ripgrep
 						pkgs.tmux
-					] ++ lib.optional pkgs.stdenv.isLinux pkgs.wl-clipboard-rs;
+					];
+
+					linuxPackages = [
+						pkgs.wl-clipboard-rs
+					];
+				in
+				lib.mkIf config.dotfiles.enable {
+					home.packages = basePackages ++ lib.optional pkgs.stdenv.isLinux linuxPackages;
 
 					home.activation.installDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
 						PATH="${pkgs.git}/bin:${pkgs.stow}/bin:$PATH" \
