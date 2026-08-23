@@ -71,7 +71,7 @@
 					];
 				in
 				lib.mkIf config.dotfiles.enable {
-					home.packages = basePackages ++ lib.optional pkgs.stdenv.isLinux linuxPackages;
+					home.packages = basePackages ++ lib.optionals pkgs.stdenv.isLinux linuxPackages;
 
 					home.activation.installDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
 						PATH="${pkgs.git}/bin:${pkgs.stow}/bin:$PATH" \
