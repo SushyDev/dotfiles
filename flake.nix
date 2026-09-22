@@ -12,7 +12,7 @@
 					};
 					systemFlakePath = lib.mkOption {
 						type = lib.types.str;
-						default = "/etc/nixos";
+						default = "";
 						description = "Path to the system flake";
 					};
 					zsh = {
@@ -30,8 +30,8 @@
 						};
 						sshSignPackage = lib.mkOption {
 							type = lib.types.str;
-							default = lib.getExe' pkgs._1password-gui "op-ssh-sign";
-							description = "The 1Password package to use";
+							default = "";
+							description = "SSH signing program for git";
 						};
 					};
 					ssh = {
@@ -42,7 +42,7 @@
 						};
 						identityAgentPath = lib.mkOption {
 							type = lib.types.str;
-							default = "~/.1password/agent.sock";
+							default = "";
 							description = "Path to the SSH identity agent socket";
 						};
 					};
@@ -95,15 +95,13 @@
 								path = "${dotfilesPath}/.config/git/config";
 							}
 						];
+						signing = {
+							format = "ssh";
+							signer = mkIfNotEmptyString config.dotfiles.git.sshSignPackage;
+						};
 						settings = {
 							safe.directory = mkIfNotEmptyString config.dotfiles.systemFlakePath;
 
-							gpg = {
-								format = "ssh";
-							};
-							"gpg \"ssh\"" = {
-								program = mkIfNotEmptyString config.dotfiles.git.sshSignPackage;
-							};
 							commit = {
 								gpgsign = true;
 							};
@@ -114,14 +112,9 @@
 						enable = true;
 						enableDefaultConfig = false;
 						includes = [
-							"${config.home.homeDirectory}/.ssh/1Password/config"
 							"${config.xdg.configHome}/ssh/extra_config"
 						];
-						matchBlocks = {
-							"*" = {
-								identityAgent = mkIfNotEmptyString config.dotfiles.ssh.identityAgentPath;
-							};
-						};
+						settings."*".IdentityAgent = lib.mkIf (config.dotfiles.ssh.identityAgentPath != "") ''"${config.dotfiles.ssh.identityAgentPath}"'';
 					};
 				};
 		};
